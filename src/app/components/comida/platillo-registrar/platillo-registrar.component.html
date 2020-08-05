@@ -1,1 +1,48 @@
-<p>platillo-registrar works!</p>
+<div class="row">
+    <h6 class="m-0">Registrar Platillos</h6>
+
+    <div class="container">
+        <br>
+        <form (ngSubmit)="registrarPlatillo()" #forma="ngForm" encType="multipart/form-data">
+            <div class="form-group">
+                <label>Platillo</label>
+                <input [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['strNombre'].touched }" class="form-control form-control-sm" type="text" placeholder="Ingrese nombre" name="strNombre" [(ngModel)]="platillo.strNombre" required #strNombre="ngModel">
+                <div class="invalid-feedback" *ngIf="strNombre.errors?.required">
+                    Ingrese un nombre de Platillo
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Descripción</label>
+                <input [ngClass]="{'is-invalid': strDesc.errors?.required && forma.controls['strDesc'].touched }" class="form-control form-control-sm" type="text" placeholder="Ingrese una descripción" name="strDesc" [(ngModel)]="platillo.strDescripcion" required #strDesc="ngModel">
+                <div class="invalid-feedback" *ngIf="strDesc.errors?.required">
+                    Ingrese un descripción de la Platillo
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Ingrediente</label>
+                <input [ngClass]="{'is-invalid': strIngr.errors?.required && forma.controls['strIngr'].touched }" class="form-control form-control-sm" type="text" placeholder="Ingrese una Ingrediente" name="strIngr" [(ngModel)]="platillo.strIngredientes" required #strIngr="ngModel">
+                <div class="invalid-feedback" *ngIf="strIngr.errors?.required">
+                    Ingrese un Ingredientes del Platillo
+                </div>
+            </div>
+
+            <div class="form-group">
+                <select [ngClass]="{'is-invalid': blnActivo.errors?.required && forma.controls['blnActivo'].touched}" data-style="btn" class="form-control form-control-sm" name="blnActivo" [(ngModel)]="platillo.blnActivo" #blnActivo="ngModel" type="text" required>
+                    <option [ngValue]="undefined" selected >Estatus</option>
+                    <option [ngValue]="true">Activa</option>
+                    <option [ngValue]="false">Inactiva</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="blnActivo.errors?.required || forma.controls['activo']?.touched">
+                    Seleccione una opción.
+                </div>
+            </div>
+
+
+            <ul class=" list-inline text-right ">
+                <li class=list-inline-item><button type="submit" [disabled]="forma.invalid" class="btn btn-outline-info btn-sm ">Agregar</button></li>
+            </ul>
+        </form>
+    </div>
+
+</div>

@@ -1,5 +1,5 @@
 export class categoriaModel {
-    id: string;
+    _id: string;
     strNombre: string;
     strDescripcion: string;
     blnActivo: boolean;

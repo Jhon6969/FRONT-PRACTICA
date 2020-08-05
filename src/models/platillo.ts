@@ -1,5 +1,5 @@
 export class platilloModel {
-    id: string;
+    _id: string;
     strNombre: string;
     strDescripcion: string;
     strIngredientes: string;

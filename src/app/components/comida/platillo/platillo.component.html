@@ -1,1 +1,65 @@
-<p>platillo works!</p>
+<div class="row">
+    <h6 class="h6 m-0">Categorias</h6>
+
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-10 col-md-11 mt-2">
+                <input [(ngModel)]="searchText" type="text" name="searchText" class="form-control form-control-sm" placeholder=" Buscar...">
+            </div>
+            <div class="col-2 col-md-1 mt-2">
+                <div>
+                    <button type="button" class="btn btn-info btn-sm" id="dropdown" data-toggle="dropdownID" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i>?</button>
+                    <div class="dropdown-menu dropdown-menu-right shadow-lg " aria-labelledby="dropdownID">
+                        <div class="dropdown-header"><span class="text-xs text-uppercase ">EXPORTAR</span>
+                        </div>
+                        <a type="button" class="dropdown-item drop-options-text" (click)="exportarEnPDF()">PDF</a>
+                        <a type="button" class="dropdown-item drop-options-text" (click)="exportarEnExcel()">Excel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="small" [ngClass]="{'table-responsive': !cargando}">
+            <table id="PDFTable" class="table table-sm table-hover table-borderless">
+                <thead>
+                    <tr class="border-bottom padding-interno">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Ingredientes</th>
+                        <th scope="col">Piezas</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="datos.categorias.length > 0">
+                    <tr *ngFor="let c of datos.categorias">
+                        <td>{{c.strNombre}}</td>
+                        <td>{{c.strDescripcion}}</td>
+                        <td>{{c.stringguardtest}}</td>
+                        <td>{{c.nmbPiezas}}</td>
+                        <td>{{c.nmbPrecio}}</td>
+                        <td *ngIf="!c.blnActivo && c.blnActivo !== undefined">Inactiva</td>
+                        <td *ngIf="c.blnActivo">Activa</td>
+                        <td class="text-center">
+                            <div class="list-inline-item">
+                                <button type="button" *ngIf="!cargando" class="btn btn-info btn-sm" id="dropdownReports" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h "></i> B</button>
+                                <div class="dropdown-menu dropdown-menu-left shadow-lg " aria-labelledby="dropdownReports">
+                                    <div class="dropdown-header text-info "><span class="text-xs text-uppercase">OPCIONES</span>
+                                    </div>
+                                    <a class="dropdown-item drop-options-text excel" (click)="actualizar(c)"><i class="fa fa-edit mr-2"></i>Actualizar</a>
+                                    <a class="dropdown-item drop-options-text pdf" (click)="desactivar(c)" *ngIf="c.blnActivo"><i class="fa fa-eye-slash mr-2 "></i>Desactivar</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row" *ngIf="cargando">
+                <div class="col" style="text-align: center;">
+                    <h6><i class="fa fa-spinner fa-pulse"></i><br> Cargando
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
