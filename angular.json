@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Front-practica"
+    }
+  },
+  "defaultProject": "Front-practica",
+  "cli": {
+    "analytics": false
+  }
 }

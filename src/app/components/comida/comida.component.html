@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <app-categoria-registrar *ngIf="datos.categoriaR"></app-categoria-registrar>
+            <app-categoria-actualizar *ngIf="datos.categoriaA"></app-categoria-actualizar>
+            <app-platillo-registrar *ngIf="datos.platilloA"></app-platillo-registrar>
+            <app-platillo-actualizar *ngIf="datos.platilloA"></app-platillo-actualizar>
+        </div>
+        <div class="col-8">
+            <app-categoria *ngIf="datos.categoria" [datos]=datos></app-categoria>
+            <app-platillo *ngIf="datos.platillo"></app-platillo>
+        </div>
+    </div>
+</div>
