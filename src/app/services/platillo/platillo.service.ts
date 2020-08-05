@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PlatilloService {
-
+ 
   url = `${environment.urlGlobal}`;
   constructor(private httpClient: HttpClient ) {
     const headers = new Headers();
